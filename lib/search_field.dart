@@ -110,7 +110,7 @@ class SearchFieldScreen extends StatelessWidget {
                 child: Row(
                   children: const [
                     Text(
-                      "Found 2 properties",
+                      "Found 4 properties",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -128,54 +128,58 @@ class SearchFieldScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   children: [
-                    // Property Card 1
+                    // Property Card 1 - Modern Apartment with City View
                     propertyCard(
-                      image: "https://via.placeholder.com/400x200",
+                      image:
+                          "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
                       title: "Modern Studio Apartment",
                       location: "Makati City, Metro Manila",
                       price: "4,500/month",
                       beds: "1",
                       baths: "1",
-                      area: "25m",
+                      area: "25m²",
                     ),
 
                     const SizedBox(height: 16),
 
-                    // Property Card 2
+                    // Property Card 2 - Luxury Living Room
                     propertyCard(
-                      image: "https://via.placeholder.com/400x200",
+                      image:
+                          "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
                       title: "Modern Studio Apartment",
                       location: "Makati City, Metro Manila",
                       price: "3,750/month",
                       beds: "1",
                       baths: "1",
-                      area: "25m",
+                      area: "25m²",
                     ),
 
                     const SizedBox(height: 16),
 
-                    // Property Card 3
+                    // Property Card 3 - Bright Interior
                     propertyCard(
-                      image: "https://via.placeholder.com/400x200",
+                      image:
+                          "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
                       title: "Modern Studio Apartment",
                       location: "Makati City, Metro Manila",
                       price: "3,000/month",
                       beds: "1",
                       baths: "1",
-                      area: "25m",
+                      area: "25m²",
                     ),
 
                     const SizedBox(height: 16),
 
-                    // Property Card 4
+                    // Property Card 4 - Modern Building
                     propertyCard(
-                      image: "https://via.placeholder.com/400x200",
+                      image:
+                          "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
                       title: "2 floor Apartment",
                       location: "Makati City, Metro Manila",
                       price: "3,500/month",
-                      beds: "1",
-                      baths: "1",
-                      area: "25m",
+                      beds: "2",
+                      baths: "2",
+                      area: "45m²",
                     ),
                   ],
                 ),
@@ -204,6 +208,14 @@ class SearchFieldScreen extends StatelessWidget {
             label: "Profile",
           ),
         ],
+        onTap: (index) {
+          // Handle bottom navigation taps
+          if (index == 0) {
+            // Home tab - Navigate back to home
+            Navigator.pop(context);
+          }
+          // Search tab is current screen, so no navigation needed
+        },
       ),
     );
   }
@@ -233,15 +245,50 @@ class SearchFieldScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Property Image
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-            child: Image.network(
-              image,
-              height: 180,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+          // Property Image with Favorite Icon
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(15),
+                ),
+                child: Image.network(
+                  image,
+                  height: 180,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 180,
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: Icon(
+                          Icons.broken_image,
+                          size: 50,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.9),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.favorite_border,
+                    size: 18,
+                    color: Color(0xfff36c6c),
+                  ),
+                ),
+              ),
+            ],
           ),
 
           // Property Details
@@ -262,9 +309,12 @@ class SearchFieldScreen extends StatelessWidget {
                   children: [
                     Icon(Icons.location_on, size: 14, color: Colors.grey[600]),
                     const SizedBox(width: 4),
-                    Text(
-                      location,
-                      style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+                    Expanded(
+                      child: Text(
+                        location,
+                        style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ],
                 ),

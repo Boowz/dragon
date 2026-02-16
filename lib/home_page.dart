@@ -216,31 +216,33 @@ class FeaturedSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
 
-          /// BIG CARD 1
+          /// BIG CARD 1 - Modern Studio Apartment with actual image
           propertyCard(
-            image: "https://via.placeholder.com/400x200",
+            image:
+                "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
             title: "Modern Studio Apartment",
             location: "Makati City, Metro Manila",
             price: "P2,000/month",
-            details: "1 Bed 1 Bath 25m",
+            details: "1 Bed 1 Bath 25m²",
             label: "Popular",
           ),
 
           const SizedBox(height: 15),
 
-          /// BIG CARD 2
+          /// BIG CARD 2 - 2 Floor Apartment with actual image
           propertyCard(
-            image: "https://via.placeholder.com/400x200",
-            title: "2 floor Apartment",
+            image:
+                "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+            title: "2 Floor Apartment",
             location: "Makati City, Metro Manila",
             price: "P4,000/month",
-            details: "1 Bed 1 Bath 25m",
+            details: "1 Bed 1 Bath 25m²",
             label: "Featured",
           ),
 
           const SizedBox(height: 15),
 
-          /// GRID STYLE CARDS
+          /// GRID STYLE CARDS with actual images
           GridView.count(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -249,10 +251,26 @@ class FeaturedSection extends StatelessWidget {
             mainAxisSpacing: 10,
             childAspectRatio: 0.8,
             children: [
-              smallCard("Modern Studio Apartment", "P3,000/month"),
-              smallCard("Modern Studio Apartment", "P2,850/month"),
-              smallCard("Modern Studio Apartment", "P2,500/month"),
-              smallCard("Modern Studio Apartment", "P4,000/month"),
+              smallCard(
+                "Modern Studio Apartment",
+                "P3,000/month",
+                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+              ),
+              smallCard(
+                "Modern Studio Apartment",
+                "P2,850/month",
+                "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+              ),
+              smallCard(
+                "Modern Studio Apartment",
+                "P2,500/month",
+                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+              ),
+              smallCard(
+                "Modern Studio Apartment",
+                "P4,000/month",
+                "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+              ),
             ],
           ),
         ],
@@ -272,6 +290,14 @@ class FeaturedSection extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -287,6 +313,19 @@ class FeaturedSection extends StatelessWidget {
                   height: 160,
                   width: double.infinity,
                   fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 160,
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: Icon(
+                          Icons.broken_image,
+                          size: 50,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Positioned(
@@ -307,6 +346,22 @@ class FeaturedSection extends StatelessWidget {
                   ),
                 ),
               ),
+              Positioned(
+                top: 10,
+                right: 10,
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.8),
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.favorite_border,
+                    size: 18,
+                    color: Color(0xfff36c6c),
+                  ),
+                ),
+              ),
             ],
           ),
           Padding(
@@ -316,12 +371,27 @@ class FeaturedSection extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
                 ),
                 const SizedBox(height: 5),
-                Text(
-                  location,
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
+                Row(
+                  children: [
+                    Icon(Icons.location_on, size: 12, color: Colors.grey[600]),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        location,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 5),
                 Text(
@@ -329,6 +399,7 @@ class FeaturedSection extends StatelessWidget {
                   style: const TextStyle(
                     color: Color(0xfff36c6c),
                     fontWeight: FontWeight.bold,
+                    fontSize: 14,
                   ),
                 ),
                 const SizedBox(height: 5),
@@ -344,21 +415,43 @@ class FeaturedSection extends StatelessWidget {
     );
   }
 
-  Widget smallCard(String title, String price) {
+  Widget smallCard(String title, String price, String imageUrl) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 3,
+            offset: const Offset(0, 1),
+          ),
+        ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
             child: Image.network(
-              "https://via.placeholder.com/200",
+              imageUrl,
               height: 100,
               width: double.infinity,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  height: 100,
+                  color: Colors.grey[300],
+                  child: const Center(
+                    child: Icon(
+                      Icons.broken_image,
+                      size: 30,
+                      color: Colors.grey,
+                    ),
+                  ),
+                );
+              },
             ),
           ),
           Padding(
@@ -372,11 +465,22 @@ class FeaturedSection extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 12,
                   ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 5),
-                const Text(
-                  "Makati City, Metro Manila",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                Row(
+                  children: [
+                    Icon(Icons.location_on, size: 8, color: Colors.grey[600]),
+                    const SizedBox(width: 2),
+                    Expanded(
+                      child: Text(
+                        "Makati City",
+                        style: TextStyle(fontSize: 9, color: Colors.grey[600]),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 5),
                 Text(
@@ -387,9 +491,36 @@ class FeaturedSection extends StatelessWidget {
                     fontSize: 12,
                   ),
                 ),
-                const Text(
-                  "1 Bed 1 Bath 25m",
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                const SizedBox(height: 2),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Text("1 Bed", style: TextStyle(fontSize: 8)),
+                    ),
+                    const SizedBox(width: 4),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 2,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[100],
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: const Text(
+                        "1 Bath",
+                        style: TextStyle(fontSize: 8),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
