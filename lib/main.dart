@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'signup_screen.dart'; // Added import
 
 void main() {
   runApp(const MyApp());
@@ -160,7 +161,7 @@ class LandingPage extends StatelessWidget {
 
                   const SizedBox(height: 15),
 
-                  /// Create Account Button
+                  /// Create Account Button - UPDATED
                   SizedBox(
                     width: double.infinity,
                     height: 55,
@@ -175,7 +176,8 @@ class LandingPage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
+                            builder: (context) =>
+                                const SignUpScreen(), // Changed from LoginScreen to SignUpScreen
                           ),
                         );
                       },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'signup_screen.dart';
+import 'home_page.dart';
+import 'signup_screen.dart'; // Added import
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -109,7 +110,15 @@ class LoginScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      // Navigate to HomeScreen when Sign In button is clicked
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomeScreen(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       "Sign In",
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -138,13 +147,15 @@ class LoginScreen extends StatelessWidget {
 
                 const SizedBox(height: 25),
 
+                /// Sign Up link - UPDATED
                 Center(
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
+                          builder: (context) =>
+                              const SignUpScreen(), // Navigate to SignUpScreen
                         ),
                       );
                     },
