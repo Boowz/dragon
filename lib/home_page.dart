@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'search_field.dart'; // Add this import
 
 void main() {
   runApp(const ViewXRentApp());
@@ -105,18 +106,35 @@ class HeaderSection extends StatelessWidget {
             style: TextStyle(color: Colors.white70),
           ),
           const SizedBox(height: 15),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: const TextField(
-              decoration: InputDecoration(
-                hintText: "Search location or property...",
-                border: InputBorder.none,
-                icon: Icon(Icons.search),
-                suffixIcon: Icon(Icons.tune),
+
+          /// SEARCH BAR - Updated to be tappable
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SearchFieldScreen(),
+                ),
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.search, color: Colors.grey),
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      "Search location or property...",
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                  Icon(Icons.tune, color: Colors.grey),
+                ],
               ),
             ),
           ),
@@ -344,7 +362,7 @@ class FeaturedSection extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8), // Fixed: Replaced emoji with 8
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -407,6 +425,16 @@ class CustomBottomNav extends StatelessWidget {
           label: "Profile",
         ),
       ],
+      onTap: (index) {
+        // Handle bottom navigation taps
+        if (index == 1) {
+          // Search tab
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const SearchFieldScreen()),
+          );
+        }
+      },
     );
   }
 }
