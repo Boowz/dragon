@@ -42,21 +42,43 @@ class LandingPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// Logo Row
+                  /// Logo Row with Image
                   Row(
-                    children: const [
-                      CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Text(
-                          "V",
-                          style: TextStyle(
-                            color: Colors.deepOrange,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    children: [
+                      /// Logo Image with Border Radius
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                          15,
+                        ), // 15px border radius
+                        child: Image.asset(
+                          'assets/images/logo.jpg', // Make sure to add your logo image here
+                          width: 40,
+                          height: 40,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            // Fallback in case image is not found
+                            return Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  "V",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFFFF7043),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
-                      SizedBox(width: 8),
-                      Text(
+                      const SizedBox(width: 8),
+                      const Text(
                         "ViewxRent",
                         style: TextStyle(
                           color: Colors.white,
@@ -195,7 +217,7 @@ class LandingPage extends StatelessWidget {
                   const SizedBox(height: 25),
 
                   const Text(
-                    "WHY CHOOSE YOURS",
+                    "WHY CHOOSE US",
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey,

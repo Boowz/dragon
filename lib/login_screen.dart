@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
-import 'signup_screen.dart'; // Added import
+import 'signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -30,20 +30,39 @@ class LoginScreen extends StatelessWidget {
 
                 const SizedBox(height: 20),
 
+                /// Logo Row with Image
                 Row(
-                  children: const [
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Text(
-                        "V",
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        'assets/images/logo.jpg',
+                        width: 40,
+                        height: 40,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                "V",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
-                    SizedBox(width: 8),
-                    Text(
+                    const SizedBox(width: 8),
+                    const Text(
                       "ViewxRent",
                       style: TextStyle(
                         color: Colors.white,
@@ -111,7 +130,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      // Navigate to HomeScreen when Sign In button is clicked
+                      // Navigate to homeScreen when Sign In button is clicked
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(

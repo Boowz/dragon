@@ -65,19 +65,38 @@ class HeaderSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            children: const [
-              CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Text(
-                  "V",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xfff36c6c),
-                  ),
+            children: [
+              /// Logo Image with Rounded Corners
+              ClipRRect(
+                borderRadius: BorderRadius.circular(15),
+                child: Image.asset(
+                  'assets/images/logo.jpg',
+                  width: 40,
+                  height: 40,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "V",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xfff36c6c),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
-              SizedBox(width: 10),
-              Text(
+              const SizedBox(width: 10),
+              const Text(
                 "ViewXRent",
                 style: TextStyle(
                   fontSize: 20,
@@ -85,10 +104,10 @@ class HeaderSection extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              Spacer(),
-              Icon(Icons.favorite_border, color: Colors.white),
-              SizedBox(width: 15),
-              Icon(Icons.notifications_none, color: Colors.white),
+              const Spacer(),
+              const Icon(Icons.favorite_border, color: Colors.white),
+              const SizedBox(width: 15),
+              const Icon(Icons.notifications_none, color: Colors.white),
             ],
           ),
           const SizedBox(height: 15),
@@ -529,9 +548,7 @@ class FeaturedSection extends StatelessWidget {
   }
 }
 
-////////////////////////////////////////////////////////
 /// BOTTOM NAVIGATION
-////////////////////////////////////////////////////////
 
 class CustomBottomNav extends StatelessWidget {
   const CustomBottomNav({super.key});

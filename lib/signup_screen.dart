@@ -39,21 +39,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                 const SizedBox(height: 10),
 
-                /// Logo
+                /// Logo Row with Image
                 Row(
-                  children: const [
-                    CircleAvatar(
-                      backgroundColor: Colors.white,
-                      child: Text(
-                        "V",
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: Image.asset(
+                        'assets/images/logo.jpg',
+                        width: 40,
+                        height: 40,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            width: 40,
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: const Center(
+                              child: Text(
+                                "V",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepOrange,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
-                    SizedBox(width: 8),
-                    Text(
+                    const SizedBox(width: 8),
+                    const Text(
                       "ViewxRent",
                       style: TextStyle(
                         color: Colors.white,
