@@ -130,8 +130,7 @@ class SearchFieldScreen extends StatelessWidget {
                   children: [
                     // Property Card 1 - Modern Apartment with City View
                     propertyCard(
-                      image:
-                          "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                      image: "assets/images/property7.jpg",
                       title: "Modern Studio Apartment",
                       location: "Makati City, Metro Manila",
                       price: "4,500/month",
@@ -144,8 +143,7 @@ class SearchFieldScreen extends StatelessWidget {
 
                     // Property Card 2 - Luxury Living Room
                     propertyCard(
-                      image:
-                          "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                      image: "assets/images/property8.jpg",
                       title: "Modern Studio Apartment",
                       location: "Makati City, Metro Manila",
                       price: "3,750/month",
@@ -158,8 +156,7 @@ class SearchFieldScreen extends StatelessWidget {
 
                     // Property Card 3 - Bright Interior
                     propertyCard(
-                      image:
-                          "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                      image: "assets/images/property9.jpg",
                       title: "Modern Studio Apartment",
                       location: "Makati City, Metro Manila",
                       price: "3,000/month",
@@ -172,8 +169,7 @@ class SearchFieldScreen extends StatelessWidget {
 
                     // Property Card 4 - Modern Building
                     propertyCard(
-                      image:
-                          "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                      image: "assets/images/property10.jpg",
                       title: "2 floor Apartment",
                       location: "Makati City, Metro Manila",
                       price: "3,500/month",
@@ -252,7 +248,7 @@ class SearchFieldScreen extends StatelessWidget {
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(15),
                 ),
-                child: Image.network(
+                child: Image.asset(
                   image,
                   height: 180,
                   width: double.infinity,

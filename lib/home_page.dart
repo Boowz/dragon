@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'search_field.dart'; // Add this import
+import 'search_field.dart';
 
 void main() {
   runApp(const ViewXRentApp());
@@ -216,10 +216,9 @@ class FeaturedSection extends StatelessWidget {
           ),
           const SizedBox(height: 15),
 
-          /// BIG CARD 1 - Modern Studio Apartment with actual image
+          /// BIG CARD 1 - Modern Studio Apartment with asset image
           propertyCard(
-            image:
-                "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+            image: "assets/images/property1.jpg",
             title: "Modern Studio Apartment",
             location: "Makati City, Metro Manila",
             price: "P2,000/month",
@@ -229,10 +228,9 @@ class FeaturedSection extends StatelessWidget {
 
           const SizedBox(height: 15),
 
-          /// BIG CARD 2 - 2 Floor Apartment with actual image
+          /// BIG CARD 2 - 2 Floor Apartment with asset image
           propertyCard(
-            image:
-                "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+            image: "assets/images/property2.jpg",
             title: "2 Floor Apartment",
             location: "Makati City, Metro Manila",
             price: "P4,000/month",
@@ -242,7 +240,7 @@ class FeaturedSection extends StatelessWidget {
 
           const SizedBox(height: 15),
 
-          /// GRID STYLE CARDS with actual images
+          /// GRID STYLE CARDS with asset images
           GridView.count(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -254,22 +252,22 @@ class FeaturedSection extends StatelessWidget {
               smallCard(
                 "Modern Studio Apartment",
                 "P3,000/month",
-                "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                "assets/images/property3.jpg",
               ),
               smallCard(
                 "Modern Studio Apartment",
                 "P2,850/month",
-                "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                "assets/images/property4.jpg",
               ),
               smallCard(
                 "Modern Studio Apartment",
                 "P2,500/month",
-                "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                "assets/images/property5.jpg",
               ),
               smallCard(
                 "Modern Studio Apartment",
                 "P4,000/month",
-                "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2340&q=80",
+                "assets/images/property6.jpg",
               ),
             ],
           ),
@@ -308,7 +306,7 @@ class FeaturedSection extends StatelessWidget {
                 borderRadius: const BorderRadius.vertical(
                   top: Radius.circular(15),
                 ),
-                child: Image.network(
+                child: Image.asset(
                   image,
                   height: 160,
                   width: double.infinity,
@@ -434,7 +432,7 @@ class FeaturedSection extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-            child: Image.network(
+            child: Image.asset(
               imageUrl,
               height: 100,
               width: double.infinity,
